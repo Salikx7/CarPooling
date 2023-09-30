@@ -26,14 +26,17 @@ class LoginPage extends StatelessWidget {
 
                 // ! if user deletes the app, the token is lost, so we need to check return back a new token if it is DB.
                 if (token == null) {
+                  print("Inside the if condition");
                   // check the database using email
                   final response = await HttpService.postRequestWithoutToken(
                       "passengers/token", <String, dynamic>{
                     "email": AuthService().getCurrentUser()?.email ?? "",
                     "firebase_id": AuthService().getCurrentUser()?.uid ?? ""
                   });
-
+                  print("Before the if condition");
                   if (response.statusCode == 200) {
+                    print("Inside the if condition 200 ");
+
                     // save the token in secure storage
                     await SecureStorageService.write(response.body["token"]);
                     Get.toNamed("/home");

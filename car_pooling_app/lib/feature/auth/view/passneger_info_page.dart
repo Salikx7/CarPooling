@@ -15,13 +15,14 @@ class PassengerInfoFormPage extends StatefulWidget {
 }
 
 class _PassengerInfoFormPageState extends State<PassengerInfoFormPage> {
-  final TextEditingController _nameController = TextEditingController(text: AuthService().getCurrentUser()?.displayName);
+  final TextEditingController _nameController =
+      TextEditingController(text: AuthService().getCurrentUser()?.displayName);
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
   final TextEditingController _cityController = TextEditingController();
   final TextEditingController _stateController = TextEditingController();
   final TextEditingController _pincodeController = TextEditingController();
-  
+
   final items = ["Male", "Female"];
   String dropDownValue = "Male";
 
@@ -59,7 +60,9 @@ class _PassengerInfoFormPageState extends State<PassengerInfoFormPage> {
                 child: DropdownButton(
                   icon: const Icon(Icons.keyboard_arrow_down),
                   value: dropDownValue,
-                  items: items.map((e) => DropdownMenuItem(value: e, child: Text(e))).toList(),
+                  items: items
+                      .map((e) => DropdownMenuItem(value: e, child: Text(e)))
+                      .toList(),
                   onChanged: (value) {
                     setState(() {
                       dropDownValue = value!;

@@ -10,7 +10,8 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Firebase.initializeApp(
+      name: "carpooling", options: DefaultFirebaseOptions.currentPlatform);
   String? token = await SecureStorageService.read();
   User? user = AuthService().getCurrentUser();
 
@@ -60,8 +61,8 @@ class MyApp extends StatelessWidget {
       initialRoute: signedIn && tokenPresent
           ? '/home'
           : signedIn
-              ? '/passenger/form'
-              : '/passenger/form',
+              ? '/login'
+              : '/login',
       getPages: getPages,
     );
   }
